@@ -19,7 +19,8 @@ resource "aws_vpc" "main" {
   enable_dns_support   = true
 
   tags = {
-    Name = "terraform-vpc"
+    Name  = "terraform-vpc"
+    owner = "Taro"
   }
 }
 
@@ -28,7 +29,8 @@ resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "terraform-igw"
+    Name  = "terraform-igw"
+    owner = "Taro"
   }
 }
 
@@ -40,7 +42,8 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "terraform-public-subnet"
+    Name  = "terraform-public-subnet"
+    owner = "Taro"
   }
 }
 
@@ -51,7 +54,8 @@ resource "aws_subnet" "private" {
   availability_zone = "ap-northeast-1a"
 
   tags = {
-    Name = "terraform-private-subnet"
+    Name  = "terraform-private-subnet"
+    owner = "Taro"
   }
 }
 
@@ -65,7 +69,8 @@ resource "aws_route_table" "public" {
   }
 
   tags = {
-    Name = "terraform-public-rt"
+    Name  = "terraform-public-rt"
+    owner = "Taro"
   }
 }
 
@@ -74,7 +79,8 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   tags = {
-    Name = "terraform-private-rt"
+    Name  = "terraform-private-rt"
+    owner = "Taro"
   }
 }
 
