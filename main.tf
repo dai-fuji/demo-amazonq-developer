@@ -1,17 +1,3 @@
-terraform {
-  required_version = ">= 1.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "ap-northeast-1" # 東京リージョン
-}
-
 # VPC
 resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
@@ -88,20 +74,4 @@ resource "aws_route_table_association" "public" {
 resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private.id
   route_table_id = aws_route_table.private.id
-}
-
-# 出力
-output "vpc_id" {
-  description = "VPCのID"
-  value       = aws_vpc.main.id
-}
-
-output "public_subnet_id" {
-  description = "パブリックサブネットのID"
-  value       = aws_subnet.public.id
-}
-
-output "private_subnet_id" {
-  description = "プライベートサブネットのID"
-  value       = aws_subnet.private.id
 }
